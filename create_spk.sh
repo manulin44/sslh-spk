@@ -6,4 +6,4 @@ cd ..
 cp -R scripts ../tmp/
 cp INFO ../tmp
 cd ../tmp
-tar -cvf ../SSLH-SCP-Tinyproxy-1.0.0-1.spk *
+tar -cvf ../SSLH-1.9-1.spk *

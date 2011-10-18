@@ -1,1 +1,2 @@
-Hello World!
+sslh-spk permet de construire un package à destination des NAS Synology.
+Ce spk permet d'ajouter un service SSLH

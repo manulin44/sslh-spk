@@ -1,2 +1,0 @@
-SSHD_ENABLE=yes
-SSHD_NO_PID_KILLALL=/opt/sbin/sshd

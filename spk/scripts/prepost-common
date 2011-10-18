@@ -20,13 +20,13 @@
 # Find the CPU architecture
 synoinfo=`get_key_value /etc.defaults/synoinfo.conf unique`
 arch=`echo $synoinfo | cut -d_ -f2`
-UPGSSLH=/tmp/sslh.upgrade.lock
+UPGRADELOCK=/tmp/sslh.upgrade.lock
 
 preinst ()
 {
 	# Check if the architecture is supported (88f628x, ppc824x, ppc853x, x86)
 	if ! echo "|88f6281|ppc824x|ppc853x|x86|" | grep -q "$arch"; then
-		echo "Your architecture is not supported by this package. Architecture  : '$arch'. Synology info : '$synoinfo'. Required : 'x86'."
+		echo "Your architecture is not supported by this package. Architecture  : '$arch'. Synology info : '$synoinfo'. Required : '88f628x, ppc824x, ppc853x, x86'."
 		exit 1
 	fi
 	exit 0
@@ -39,16 +39,10 @@ postinst ()
 	mkdir -p /usr/local/sslh/bin
 
 	# Create symlink
-	ln -s ${SYNOPKG_PKGDEST}/bin/scp-$arch /usr/local/sslh/bin/scp
-	ln -s ${SYNOPKG_PKGDEST}/bin/sftp-$arch /usr/local/sslh/bin/sftp
 	ln -s ${SYNOPKG_PKGDEST}/bin/sslh-$arch /usr/local/sslh/bin/sslh
-	ln -s ${SYNOPKG_PKGDEST}/bin/tinyproxy-$arch /usr/local/sslh/bin/tinyproxy
 	ln -s ${SYNOPKG_PKGDEST}/bin/generate_log.pl /usr/local/sslh/bin/generate_log.pl
 	ln -s ${SYNOPKG_PKGDEST}/log /usr/local/sslh/log
-	ln -s ${SYNOPKG_PKGDEST}/extension.ini /usr/local/sslh/extension.ini
 	ln -s ${SYNOPKG_PKGDEST}/sslh.ini /usr/local/sslh/sslh.ini
-	ln -s ${SYNOPKG_PKGDEST}/tinyproxy.conf /usr/local/sslh/tinyproxy.conf
-	ln -s ${SYNOPKG_PKGDEST}/tinyproxy.conf.tpl /usr/local/sslh/tinyproxy.conf.tpl
 	ln -s ${SYNOPKG_PKGDEST}/www /usr/local/sslh/www
 
 	# Correct the files ownership
@@ -56,9 +50,7 @@ postinst ()
 
 	# Correct the files permission
 	chmod 755 ${SYNOPKG_PKGDEST}/bin/*
-	chmod 666 ${SYNOPKG_PKGDEST}/extension.ini
 	chmod 666 ${SYNOPKG_PKGDEST}/sslh.ini
-	chmod 666 ${SYNOPKG_PKGDEST}/tinyproxy.conf
 	chmod 777 ${SYNOPKG_PKGDEST}/log
 
 	exit 0

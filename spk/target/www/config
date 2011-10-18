@@ -1,8 +1,8 @@
 {
 	".url": {
 		"fr.nounours.sslh": {
-			"title": "SSLH-SCP-Tinyproxy",
-			"desc": "SSLH permet d'utiliser SSH, HTTPS et OpenVPN sur un même port.\nSCP permet la copie sécurisée de fichier à distance.\nTinyproxy est un proxy HTTP très léger.",
+			"title": "SSLH",
+			"desc": "SSLH permet d'utiliser SSH, HTTPS et OpenVPN sur un même port.",
 			"icon": "images/icon{0}.png",
 			"type": "legacy",
 			"url": "3rdparty/sslh/index.cgi",

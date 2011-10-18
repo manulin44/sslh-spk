@@ -19,36 +19,6 @@ if ($user ne 'admin') {
 	die;
 }
 
-open(IN,"/usr/local/sslh/extension.ini");
-while($l=<IN>) {
-	if ($l =~ /([^=]+)=(.*)/)
-	{
-		$key=$1;
-		$value=$2;
-		if ($tmpljs{'extensions'}) {
-			$tmpljs{'extensions'}.=",";
-		}
-		$tmpljs{'extensions'}.="[\'$key\',\'$value\']";
-	}
-}
-close(IN);
-$tmpljs{'extensions'}="[".$tmpljs{'extensions'}."]";
-
-open(IN,"/usr/local/sslh/tinyproxy.conf");
-while($l=<IN>) {
-	if ($l =~ /^(Port|Listen)\s+(.*)/)
-	{
-		$key=$1;
-		$value=$2;
-		if ($tmpljs{'tinyproxy'}) {
-			$tmpljs{'tinyproxy'}.=",";
-		}
-		$tmpljs{'tinyproxy'}.="[\'$key\',\'$value\']";
-	}
-}
-close(IN);
-$tmpljs{'tinyproxy'}="[".$tmpljs{'tinyproxy'}."]";
-
 open(IN,"/usr/local/sslh/sslh.ini");
 while($l=<IN>) {
 	if ($l =~ /([^=]+)=([0-9.]+):([0-9]+)/)
