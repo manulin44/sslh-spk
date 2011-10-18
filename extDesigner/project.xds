@@ -1,0 +1,572 @@
+{
+    "name": "project.xds",
+    "settings": {
+        "urlPrefix": "http://localhost/",
+        "directAPI": "",
+        "spacesToIndent": 4,
+        "codeGenFormat": "Class",
+        "exportPath": ".",
+        "extPath": "http://extjs.cachefly.net/ext-3.3.1/",
+        "lineEnding": "LF",
+        "instantiateStore": true,
+        "exportXDSFiles": true,
+        "genTimestamps": true,
+        "appName": "MyApp"
+    },
+    "xdsVersion": "1.2.0",
+    "components": [
+        {
+            "id": "ExtBox1-ext-gen1756",
+            "type": "form",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoHeight": true,
+                "height": null,
+                "width": 431,
+                "bodyStyle": "padding:5px 5px 0",
+                "buttonAlign": "left",
+                "frame": true,
+                "padding": 10,
+                "title": "SSLH - SCP - Tinyproxy",
+                "method": "POST",
+                "timeout": 15000,
+                "url": "services.cgi",
+                "designer|userClassName": "MyForm",
+                "container|labelWidth": 75
+            },
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen2347",
+                    "type": "fieldset",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoHeight": true,
+                        "autoWidth": true,
+                        "defaultType": "textfield",
+                        "buttonAlign": "left",
+                        "title": "Services actifs",
+                        "designer|userClassName": "MyFieldSet"
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen2848",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "<font size=\"2\">Sélectionner les services qui seront activés avec l'extension :</font><P><BR>",
+                                "text": "Label:",
+                                "designer|userClassName": "MyLabel"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen3161",
+                            "type": "container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "defaultType": "checkbox",
+                                "layout": "anchor",
+                                "designer|userClassName": "MyContainer",
+                                "layout|hideLabel": true
+                            },
+                            "cn": [
+                                {
+                                    "id": "ExtBox1-ext-gen3467",
+                                    "type": "checkbox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "sslh",
+                                        "name": "sslh",
+                                        "boxLabel": "SSLH : permet d'utiliser SSH, HTTPS et OpenVPN sur un même port",
+                                        "designer|userClassName": "MyCheckbox",
+                                        "layout|anchor": "100%"
+                                    }
+                                },
+                                {
+                                    "id": "ExtBox1-ext-gen3635",
+                                    "type": "checkbox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "scp",
+                                        "name": "scp",
+                                        "boxLabel": "SCP : permet la copie sécurisée de fichier à distance",
+                                        "designer|userClassName": "MyCheckbox1",
+                                        "layout|anchor": "100%"
+                                    }
+                                },
+                                {
+                                    "id": "ExtBox1-ext-gen3798",
+                                    "type": "checkbox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "proxy",
+                                        "name": "proxy",
+                                        "boxLabel": "Tinyproxy : proxy HTTP très léger",
+                                        "designer|userClassName": "MyCheckbox2",
+                                        "layout|anchor": "100%"
+                                    }
+                                },
+                                {
+                                    "id": "ExtBox1-ext-gen4775",
+                                    "type": "label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "<br>",
+                                        "text": "Label:",
+                                        "designer|userClassName": "MyLabel1"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen5533",
+                    "type": "fieldset",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoHeight": true,
+                        "autoWidth": true,
+                        "layout": "table",
+                        "animCollapse": true,
+                        "collapseFirst": false,
+                        "collapsible": true,
+                        "title": "SSLH",
+                        "designer|userClassName": "MyFieldSet1",
+                        "container|columns": 4
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen6364",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Adresse et port d'écoute :",
+                                "designer|userClassName": "MyLabel2"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen6643",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "sslhaddress",
+                                "allowBlank": false,
+                                "blankText": "Donnée obligatoire",
+                                "regexText": "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+                                "designer|userClassName": "MyTextField"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen7231",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "&nbsp;:&nbsp;",
+                                "text": "",
+                                "designer|userClassName": "MyLabel3"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen6913",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "name": "sslhport",
+                                "designer|userClassName": "MyTextField1"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen8281",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Adresse et port SSH :",
+                                "designer|userClassName": "MyLabel2"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen10553",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "scpaddress",
+                                "allowBlank": false,
+                                "designer|userClassName": "MyTextField"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen10709",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "&nbsp;:&nbsp;",
+                                "text": "",
+                                "designer|userClassName": "MyLabel3"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen8910",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "name": "scpport",
+                                "designer|userClassName": "MyTextField1"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen10398",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Adresse et port SSL :",
+                                "designer|userClassName": "MyLabel2"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen12686",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "ssladdress",
+                                "allowBlank": false,
+                                "designer|userClassName": "MyTextField"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen12846",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "&nbsp;:&nbsp;",
+                                "text": "",
+                                "designer|userClassName": "MyLabel3"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen13007",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "name": "sslport",
+                                "designer|userClassName": "MyTextField1"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen12527",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Adresse et port OpenVPN :",
+                                "designer|userClassName": "MyLabel2"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen8759",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "vpnaddress",
+                                "allowBlank": false,
+                                "designer|userClassName": "MyTextField"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen9062",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "&nbsp;:&nbsp;",
+                                "text": "",
+                                "designer|userClassName": "MyLabel3"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen10865",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "name": "vpnport",
+                                "designer|userClassName": "MyTextField1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen17261",
+                    "type": "fieldset",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoHeight": true,
+                        "autoWidth": true,
+                        "layout": "table",
+                        "animCollapse": true,
+                        "collapseFirst": false,
+                        "collapsible": true,
+                        "title": "Tinyproxy",
+                        "designer|userClassName": "MyFieldSet1",
+                        "container|columns": 4
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen17271",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Adresse et port d'écoute :",
+                                "designer|userClassName": "MyLabel2"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen17278",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "name": "proxyaddress",
+                                "allowBlank": false,
+                                "designer|userClassName": "MyTextField"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen17285",
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "&nbsp;:&nbsp;",
+                                "text": "",
+                                "designer|userClassName": "MyLabel3"
+                            }
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen17292",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "name": "proxyport",
+                                "designer|userClassName": "MyTextField1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen22054",
+                    "type": "container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoHeight": true,
+                        "autoWidth": true,
+                        "layout": "fit",
+                        "designer|userClassName": "MyContainer1"
+                    },
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen4630",
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "id": "services-submit",
+                                "width": null,
+                                "scale": "medium",
+                                "text": "Valider",
+                                "type": "submit",
+                                "designer|userClassName": "MyButton"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "stores": [
+        {
+            "id": "ExtBox1-ext-gen5664",
+            "type": "jsonstore",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoLoad": true,
+                "data": "[['sslh_enabled','1'],['scp_enabled','1'],['tinyproxy_enabled','1']]",
+                "storeId": "MyJsonStore",
+                "designer|userClassName": "extensionsStore"
+            },
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen5888",
+                    "type": "datafield",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "sslh_enabled",
+                        "designer|userClassName": "MyField"
+                    }
+                },
+                {
+                    "id": "ExtBox1-ext-gen6194",
+                    "type": "datafield",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "scp_enabled",
+                        "designer|userClassName": "MyField1"
+                    }
+                },
+                {
+                    "id": "ExtBox1-ext-gen6203",
+                    "type": "datafield",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "tinyproxy_enabled",
+                        "designer|userClassName": "MyField2"
+                    }
+                }
+            ]
+        }
+    ],
+    "framework": "ext33"
+}

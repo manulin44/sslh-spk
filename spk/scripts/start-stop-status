@@ -1,0 +1,150 @@
+#!/bin/sh
+
+PATH=/bin:/usr/bin:/usr/syno/bin
+
+SSLH=/usr/local/sslh/bin/sslh
+SSLHWWW=/usr/local/sslh/www
+TINYPROXY=/usr/local/sslh/bin/tinyproxy
+SCP=/usr/local/sslh/bin/scp
+SYNO3APP=/usr/syno/synoman/webman/3rdparty
+
+/usr/local/sslh/bin/generate_log.pl > /usr/local/sslh/log/genlog
+
+# Files
+SSLHLOG=/usr/local/sslh/log/sslh-spk.log
+EXTENSION_CONF=/usr/local/sslh/extension.ini
+SSLH_CONF=/usr/local/sslh/sslh.ini
+TINYPROXY_CONF=/usr/local/sslh/tinyproxy.conf
+
+#default values
+SSLH_ENABLED=0
+SCP_ENABLED=0
+PROXY_ENABLED=0
+
+if [ -f $EXTENSION_CONF ]
+then
+	SSLH_ENABLED=`/bin/get_key_value $EXTENSION_CONF sslh_enabled`
+	SCP_ENABLED=`/bin/get_key_value $EXTENSION_CONF scp_enabled`
+	PROXY_ENABLED=`/bin/get_key_value $EXTENSION_CONF tinyproxy_enabled`
+fi
+
+if [ -f $SSLH_CONF ]
+then
+	LISTEN=`/bin/get_key_value $SSLH_CONF listen`
+	SSL=`/bin/get_key_value $SSLH_CONF ssl`
+	SSH=`/bin/get_key_value $SSLH_CONF ssh`
+	VPN=`/bin/get_key_value $SSLH_CONF openvpn`
+fi
+
+start_daemon ()
+{
+    echo `date`" : Starting SSLH-SCP-Tinyproxy extension $SSLH_ENABLED $SCP_ENABLED $PROXY_ENABLED..." >> $SSLHLOG
+	# Launch SSLH and TINYPROXY in the background.
+    if [ "$SSLH_ENABLED" = "1" ]
+	then
+		echo `date`" : Starting SSLH..." >> $SSLHLOG
+		$SSLH -p $LISTEN --ssl $SSL --ssh $SSH --openvpn $VPN
+	fi
+	
+	if [ "$SCP_ENABLED" = "1" ]
+	then
+		echo `date`" : Enabling SCP..." >> $SSLHLOG
+		ln -s $SCP /sbin/scp
+	fi
+	
+	if [ "$PROXY_ENABLED" = "1" ]
+	then
+	    echo `date`" : Starting Tinyproxy..." >> $SSLHLOG
+		$TINYPROXY -c $TINYPROXY_CONF
+	fi
+
+    # Install the application in the main interface.
+    if [ -d $SYNO3APP ]
+    then
+		rm -f $SYNO3APP/sslh
+		ln -s $SSLHWWW $SYNO3APP/sslh
+    fi
+}
+
+stop_daemon ()
+{
+    echo `date`" : Stoping SSLH and Tinyproxy..." >> $SSLHLOG
+
+    PID=`ps | grep $SSLH | grep -v grep |awk '{print $1}'`
+	if [ "$PID" != "" ]
+	then
+		echo `date`" : Stop SSLH..." >> $SSLHLOG
+		kill $PID
+	fi
+	
+    PID=`ps | grep $TINYPROXY | grep -v grep |awk '{print $1}'`
+	if [ "$PID" != "" ]
+	then
+		echo `date`" : Stop Tinyproxy..." >> $SSLHLOG
+		kill $PID
+	fi
+	
+    if [ -L /sbin/scp ]
+	then
+		echo `date`" : Remove SCP link..." >> $SSLHLOG
+		rm /sbin/scp
+	fi
+
+    # Remove the application from the main interface if it was previously added.
+    if [ -h $SYNO3APP/sslh ]
+    then
+		rm -f $SYNO3APP/sslh
+    fi
+}
+
+daemon_status ()
+{
+	[ -h $SYNO3APP/sslh ]
+}
+
+case $1 in
+    start)
+        if daemon_status
+        then
+            echo SSLH daemon already running
+            exit 0
+        else
+            echo Starting SSLH ...
+            start_daemon
+            exit $?
+        fi
+        ;;
+    stop)
+        if daemon_status
+        then
+            echo Stopping SSLH ...
+            stop_daemon
+            exit $?
+        else
+            echo SSLH is not running
+            exit 0
+        fi
+        ;;
+    restart)
+        stop_daemon
+        start_daemon
+        exit $?
+        ;;
+    status)
+        if daemon_status
+        then
+            echo SSLH is running
+            exit 0
+        else
+            echo SSLH is not running
+            exit 1
+        fi
+        ;;
+	log)
+		echo /usr/local/sslh/log/genlog
+		exit 0
+		;;
+    *)
+        exit 1
+        ;;
+esac
